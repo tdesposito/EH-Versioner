@@ -83,16 +83,16 @@ Bumping version from 1.3.0-beta.4 to 1.3.0
 ```
 
 ## Command Line Flags
-Short Flag | Long Flag | Effect
+Long Flag |Short Flag | Effect
 -- | -- | --
--d | --dry-run      | don't change anything, just describe what would happen
--f | --force=*version*  | force the version. Overrides arguments
--h | --help         | show help
--q | --quiet        | don't output anything, just get on with it
--v | --version      | show version
-* | --no-commit    | don't commit changes
-* | --no-push      | don't push changes
-* | --no-tag       | don't tag the commit and push the tag
+--dry-run           |-d | don't change anything, just describe what would happen
+--force=*version*   |-f | force the version. Overrides arguments
+--help              |-h | show help
+--quiet             |-q | don't output anything, just get on with it
+--version           |-v | show version
+--no-commit         |   | don't commit changes
+--no-push           |   | don't push changes
+--no-tag            |   | don't tag the commit and push the tag
 
 ## Installation
 ```console
