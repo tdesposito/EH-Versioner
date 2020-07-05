@@ -90,9 +90,9 @@ Short Flag | Long Flag | Effect
 -h | --help         | show help
 -q | --quiet        | don't output anything, just get on with it
 -v | --version      | show version
-   | --no-commit    | don't commit changes
-   | --no-push      | don't push changes
-   | --no-tag       | don't tag the commit and push the tag
+* | --no-commit    | don't commit changes
+* | --no-push      | don't push changes
+* | --no-tag       | don't tag the commit and push the tag
 
 ## Installation
 ```console
