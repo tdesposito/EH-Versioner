@@ -44,8 +44,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tdesposito/EH-Versioner.git",
-    }
+    "url": "https://github.com/tdesposito/EH-Versioner.git"
+  },
   "scripts": {
     "posttest": "eslint .",
     "prepack": "oclif-dev readme",
