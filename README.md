@@ -1,19 +1,17 @@
 # eh-bumpversion
 
-Updates the `version` key in the local `package.json` AND wherever else it occurs in the files you specify. Adheres to a subset of [Semantic Versioning](https://semver.org).
+Updates (bumps) the `version` key in the local `package.json` AND wherever else it occurs in the files you specify. Adheres to a subset of [Semantic Versioning](https://semver.org).
 
+[![Version](https://img.shields.io/npm/v/EH-Versioner.svg)](https://npmjs.org/package/EH-Versioner)
+[![License](https://img.shields.io/npm/l/EH-Versioner.svg)](https://github.com/tdesposito/EH-Versioner/blob/master/package.json)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-<!-- [![Version](https://img.shields.io/npm/v/EH-Versioner.svg)](https://npmjs.org/package/EH-Versioner) -->
-<!-- [![Downloads/week](https://img.shields.io/npm/dw/EH-Versioner.svg)](https://npmjs.org/package/EH-Versioner) -->
-<!-- [![License](https://img.shields.io/npm/l/EH-Versioner.svg)](https://github.com/tdesposito/EH-Versioner/blob/master/package.json) -->
 
 ## Why?
 
-I often need the version number in contexts other than (and in addition to)
-`package.json`, such as the `README` and maybe the footer of a static HTML file,
-for example.
+I often need the version number in contexts in addition to `package.json`, such
+as `README.md` or (for example) the footer of a static HTML file.
 
-Shout out to [bumpytrack](https://pypi.org/project/bumpytrack/) for inspiration.
+Shout out to [bumpytrack](https://pypi.org/project/bumpytrack/) for the inspiration.
 
 ## Usage
 
@@ -128,7 +126,11 @@ Each file is searched for the corresponding `search` phrase with the current
 version, and when found replaced with the same phrase with the NEW version. If
 the search fails, you get a warning.
 
-## To Do
+## (Maybe) To Do
+
+These are things I think would be good for a general-purpose tool, but which I don't particularly need.
 
 * Add defaults for the command-line flags to the configuration, so you don't have to specify non-default options all the time.
-* Set defaults for the command-line arguments to the configuration.
+* Set defaults for the command-line arguments to the configuration (if you don't want "patch" for example).
+* Make the git phase respect --quiet.
+* Add a --verbose mode

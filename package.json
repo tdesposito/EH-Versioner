@@ -1,6 +1,6 @@
 {
   "name": "EH-Versioner",
-  "description": "Update version number across an entire codebase",
+  "description": "Bump version number across an entire codebase",
   "author": "Todd D. Esposito <todd@espositoholdings.com>",
   "version": "1.0.0",
   "bin": {
@@ -29,16 +29,23 @@
     "/bin",
     "/src"
   ],
-  "homepage": "https://github.com/tdesposito/EH-Versioner",
+  "homepage": "https://github.com/tdesposito/EH-Versioner#eh-bumpversion",
   "keywords": [
-    "oclif"
+    "bump",
+    "semver",
+    "version",
+    "version bump",
+    "versioning"
   ],
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
     "bin": "eh-bumpversion"
   },
-  "repository": "tdesposito/EH-Versioner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tdesposito/EH-Versioner.git",
+    }
   "scripts": {
     "posttest": "eslint .",
     "prepack": "oclif-dev readme",
