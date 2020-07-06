@@ -2,8 +2,8 @@
 
 Updates (bumps) the `version` key in the local `package.json` AND wherever else it occurs in the files you specify. Adheres to a subset of [Semantic Versioning](https://semver.org).
 
-[![Version](https://img.shields.io/npm/v/EH-Versioner.svg)](https://npmjs.org/package/EH-Versioner)
-[![License](https://img.shields.io/npm/l/EH-Versioner.svg)](https://github.com/tdesposito/EH-Versioner/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/eh-bumpversion.svg)](https://npmjs.org/package/eh-bumpversion)
+[![License](https://img.shields.io/npm/l/eh-bumpversion.svg)](https://github.com/tdesposito/EH-Versioner/blob/master/package.json)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
 ## Why?
