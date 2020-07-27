@@ -4,6 +4,7 @@ Updates (bumps) the `version` key in the local `package.json` AND wherever else 
 
 [![Version](https://img.shields.io/npm/v/eh-bumpversion.svg)](https://npmjs.org/package/eh-bumpversion)
 [![License](https://img.shields.io/npm/l/eh-bumpversion.svg)](https://github.com/tdesposito/EH-Versioner/blob/master/package.json)
+[![Downloads](https://img.shields.io/npm/dm/eh-bumpversion)](https://npmjs.org/package/eh-bumpversion)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
 ## Why?
@@ -110,6 +111,12 @@ Configuration lives in `package.json` under the `ehVersioner` key:
   "ehVersioner": {
     "targets": [
       {
+        "comment": "target a (possibly nested) key in a JSON file. This line is instructive, not functional",
+        "file": "some-file.json",
+        "key": "software.version.key"
+      },
+      {
+        "comment": "target a string in file. This line is instructive, not functional",
         "file": "README.md",
         "search": "EH-Versioner/{{version}} win32-x64 node-v12.13.1"
       },
@@ -121,10 +128,10 @@ Configuration lives in `package.json` under the `ehVersioner` key:
   }
 }
 ```
-
 Each file is searched for the corresponding `search` phrase with the current
-version, and when found replaced with the same phrase with the NEW version. If
-the search fails, you get a warning.
+version, **OR** for JSON files the indicated `key`. When found replaced the
+search text or key is replaced with the NEW version. If the search fails, you
+get a warning.
 
 ## (Maybe) To Do
 
