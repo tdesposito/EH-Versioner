@@ -6,6 +6,18 @@
   "bin": {
     "eh-bumpversion": "./bin/run"
   },
+  "ehVersioner": {
+    "targets": [
+      {
+        "file": "package-lock.json",
+        "key": "version"
+      },
+      {
+        "file": "README.md",
+        "search": "EH-Versioner/{{version}} win32-x64 node-v12.13.1"
+      }
+    ]
+  },
   "bugs": "https://github.com/tdesposito/EH-Versioner/issues",
   "dependencies": {
     "@oclif/command": "^1.7.0",
