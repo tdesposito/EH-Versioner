@@ -4,7 +4,8 @@
   "author": "Todd D. Esposito <todd@espositoholdings.com>",
   "version": "1.1.0",
   "bin": {
-    "eh-bumpversion": "./bin/run"
+    "eh-bumpversion": "./bin/run",
+    "ehbump": "./bin/run"
   },
   "ehVersioner": {
     "targets": [
@@ -14,7 +15,7 @@
       },
       {
         "file": "README.md",
-        "search": "EH-Versioner/{{version}} win32-x64 node-v12.13.1"
+        "search": "eh-bumpversion/{{version}} win32-x64 node-v12.13.1"
       }
     ]
   },
