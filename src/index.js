@@ -76,9 +76,6 @@ class EhVersionerCommand extends Command {
         }
       }
       pkg.version = bumped
-      if (!flags['dry-run']) {
-        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
-      }
 
       if (pkg.ehVersioner && pkg.ehVersioner.targets && Array.isArray(pkg.ehVersioner.targets)) {
         pkg.ehVersioner.targets.forEach(t => {
@@ -93,10 +90,10 @@ class EhVersionerCommand extends Command {
           }
         })
       }
-
     }
 
     if (!flags['dry-run']) {
+      fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
       try {
         commitChanges(updateList, current, bumped, flags)
       } catch (error) {
