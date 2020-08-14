@@ -2,7 +2,7 @@
   "name": "eh-bumpversion",
   "description": "Bump version number across an entire codebase",
   "author": "Todd D. Esposito <todd@espositoholdings.com>",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "bin": {
     "eh-bumpversion": "./bin/run",
     "ehbump": "./bin/run"

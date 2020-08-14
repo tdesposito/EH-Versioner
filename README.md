@@ -101,7 +101,7 @@ Long Flag |Short Flag | Effect
 $ npm install -g eh-bumpversion
 ... lots of stuff happens here ...
 $ eh-bumpversion --version
-eh-bumpversion/1.1.0 win32-x64 node-v12.13.1
+eh-bumpversion/1.2.0 win32-x64 node-v12.13.1
 ```
 *Note that the configuration below will keep this section up to date with the current version of this package.* 😃
 
