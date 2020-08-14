@@ -22,7 +22,7 @@ const git = cmd => {
 
 module.exports = (changeList, current, bumped, flags) => {
   const filelist = changeList.join(' ')
-  var msg = `Bump version ${current} -> ${bumped}`
+  var msg = `Bump version ${current} → ${bumped}`
   if (current === bumped || flags.force) {
     msg = `Set version to ${bumped}`
   }
