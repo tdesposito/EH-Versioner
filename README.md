@@ -16,6 +16,8 @@ Shout out to [bumpytrack](https://pypi.org/project/bumpytrack/) for the inspirat
 
 ## Usage
 
+We install an alias, `ehbump` for the "official" `eh-bumpversion` command as of version 1.2.0.
+
 Without any parameters, running `eh-bumpversion` will increment the last version component, meaning "patch".
 
 ```console
@@ -89,16 +91,17 @@ Long Flag |Short Flag | Effect
 --help              |-h | show help
 --quiet             |-q | don't output anything, just get on with it
 --version           |-v | show version
+--init              |   | init the ehVersioner configuration key in package.json. Just that and nothing more.
 --no-commit         |   | don't commit changes
 --no-push           |   | don't push changes
 --no-tag            |   | don't tag the commit and push the tag
 
 ## Installation
 ```console
-$ npm install -g EH-Versioner
+$ npm install -g eh-bumpversion
 ... lots of stuff happens here ...
 $ eh-bumpversion --version
-EH-Versioner/1.1.0 win32-x64 node-v12.13.1
+eh-bumpversion/1.1.0 win32-x64 node-v12.13.1
 ```
 *Note that the configuration below will keep this section up to date with the current version of this package.* 😃
 
@@ -118,7 +121,7 @@ Configuration lives in `package.json` under the `ehVersioner` key:
       {
         "comment": "target a string in file. This line is instructive, not functional",
         "file": "README.md",
-        "search": "EH-Versioner/{{version}} win32-x64 node-v12.13.1"
+        "search": "eh-bumpversion/{{version}} win32-x64 node-v12.13.1"
       },
       {
         "file": "site/template/footer.inc.html",
@@ -129,9 +132,8 @@ Configuration lives in `package.json` under the `ehVersioner` key:
 }
 ```
 Each file is searched for the corresponding `search` phrase with the current
-version, **OR** for JSON files the indicated `key`. When found replaced the
-search text or key is replaced with the NEW version. If the search fails, you
-get a warning.
+version, **OR** for JSON files the indicated `key`. When found the search text
+or key is replaced with the NEW version. If the search fails, you get a warning.
 
 ## (Maybe) To Do
 

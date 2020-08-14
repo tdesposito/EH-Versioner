@@ -22,52 +22,78 @@ class EhVersionerCommand extends Command {
       this.error('No package.json file in the current directory. Aborting.', {exit: 1})
     }
 
-    var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+    var pkg
+    try {
+      pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+    } catch (error) {
+      this.error('Your package.json seems to be ill-formed. Aborting.', {exit: 2})
+    }
     var current = pkg.version
 
-    if (!current && !flags.force) {
-      if (!flags.quiet) {
-        this.warn('No "version" key in package.json. Setting version to 1.0.0')
+    if (flags.init) {
+      if (pkg.ehVersioner) {
+        this.error('There is already an ehVersioner key in your package.json. Aborting.', {exit: 3})
       }
-      current = '1.0.0'
-      args.reason = 'set'
-    }
-
-    var bumped
-    try {
-      if (flags.force) {
-        args.target = flags.force
-        args.reason = 'force'
+      pkg.ehVersion = {
+        "targets": [
+          {
+            "comment": "target a (possibly nested) key in a JSON file. This comment is instructive, not functional",
+            "file": "some-file.json",
+            "key": "software.version.key",
+          },
+          {
+            "comment": "target a string in file. This comment is instructive, not functional",
+            "file": "site/template/footer.inc.html",
+            "search": "<p>Site Version {{version}}</p>",
+          },
+        ]
       }
-      bumped = bumpVersion(current, args.reason, args.target)
-    } catch (error) {
-      this.error(error, {exit: 1})
-    }
-
-    if (!flags.quiet) {
-      if (args.reason === 'set') {
-        this.log(`Setting version to ${bumped}`)
-      } else {
-        this.log(`Bumping version from ${current} to ${bumped}`)
-      }
-    }
-    pkg.version = bumped
-    if (!flags['dry-run']) {
-      fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
-    }
-
-    if (pkg.ehVersioner && pkg.ehVersioner.targets && Array.isArray(pkg.ehVersioner.targets)) {
-      pkg.ehVersioner.targets.forEach(t => {
-        try {
-          updateTarget(t, current, bumped, flags)
-          updateList.push(t.file)
-          if (!flags.quiet) {
-            this.log(`Updated ${t.file}`)
-          }
-        } catch (error) {
-          this.warn(error)
+    } else {
+      if (!current && !flags.force) {
+        if (!flags.quiet) {
+          this.warn('No "version" key in package.json. Setting version to 1.0.0')
         }
-      })
+        current = '1.0.0'
+        args.reason = 'set'
+      }
+
+      var bumped
+      try {
+        if (flags.force) {
+          args.target = flags.force
+          args.reason = 'force'
+        }
+        bumped = bumpVersion(current, args.reason, args.target)
+      } catch (error) {
+        this.error(error, {exit: 1})
+      }
+
+      if (!flags.quiet) {
+        if (args.reason === 'set') {
+          this.log(`Setting version to ${bumped}`)
+        } else {
+          this.log(`Bumping version from ${current} to ${bumped}`)
+        }
+      }
+      pkg.version = bumped
+      if (!flags['dry-run']) {
+        fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
+      }
+
+      if (pkg.ehVersioner && pkg.ehVersioner.targets && Array.isArray(pkg.ehVersioner.targets)) {
+        pkg.ehVersioner.targets.forEach(t => {
+          try {
+            updateTarget(t, current, bumped, flags)
+            updateList.push(t.file)
+            if (!flags.quiet) {
+              this.log(`Updated ${t.file}`)
+            }
+          } catch (error) {
+            this.warn(error)
+          }
+        })
+      }
+
     }
 
     if (!flags['dry-run']) {
@@ -110,6 +136,11 @@ EhVersionerCommand.flags = {
   force: flags.string({
     char: 'f',
     description: 'force the version. Overrides arguments',
+  }),
+  init: flags.boolean({
+    default: false,
+    allowNo: false,
+    description: 'initialize the local package.json with the ehVersioner key',
   }),
   push: flags.boolean({
     default: true,
