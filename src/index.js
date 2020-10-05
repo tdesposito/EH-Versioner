@@ -34,7 +34,7 @@ class EhVersionerCommand extends Command {
       if (pkg.ehVersioner) {
         this.error('There is already an ehVersioner key in your package.json. Aborting.', {exit: 3})
       }
-      pkg.ehVersion = {
+      pkg.ehVersioner = {
         "targets": [
           {
             "comment": "target a (possibly nested) key in a JSON file. This comment is instructive, not functional",
