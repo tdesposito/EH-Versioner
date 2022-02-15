@@ -93,7 +93,7 @@ class EhVersionerCommand extends Command {
     }
 
     if (!flags['dry-run']) {
-      fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2))
+      fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n')
       if (!flags.init) {
         try {
           commitChanges(updateList, current, bumped, flags)
